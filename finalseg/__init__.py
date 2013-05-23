@@ -61,7 +61,6 @@ def viterbi(obs, states, start_p, trans_p, emit_p):
 	except KeyError, ex:
 		print "KeyError:",ex
 		return (0,{})
-
 	return (prob, path[state])
 
 

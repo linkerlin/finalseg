@@ -29,7 +29,8 @@ def __raw_seg(sentence):
 		j += 1
 	yield sentence[i:j + 1]
 
-
+# obs >>> observation
+# emit_p >>> emission_probability
 def viterbi(obs, states, start_p, trans_p, emit_p):
 	V = [{}] #tabular
 	path = {}

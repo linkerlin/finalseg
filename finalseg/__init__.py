@@ -33,6 +33,8 @@ def __raw_seg(sentence):
 def viterbi(obs, states, start_p, trans_p, emit_p):
 	V = [{}] #tabular
 	path = {}
+	prob = 0
+	state = 0
 	for y in states: #init
 		V[0][y] = start_p[y] * emit_p[y].get(obs[0], 0)
 		path[y] = [y]
@@ -57,7 +59,8 @@ def viterbi(obs, states, start_p, trans_p, emit_p):
 		else:
 			(prob, state) = max([(V[len(obs) - 1][y], y) for y in states])
 	except KeyError, ex:
-		print ex
+		print "KeyError:",ex
+		return (0,{})
 
 	return (prob, path[state])
 
